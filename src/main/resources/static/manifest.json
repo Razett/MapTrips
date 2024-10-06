@@ -1,0 +1,14 @@
+{
+  "display": "standalone",
+  "name": "MapTrips",
+  "short_name": "MapTrips",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "1025x1025",
+      "type": "image/png"
+    }
+  ]
+}

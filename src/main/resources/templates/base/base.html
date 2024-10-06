@@ -7,6 +7,7 @@
     <title>MapTrips</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/manifest.json}" rel="manifest">
     <style>
         #loader {
             transition: all 0.3s ease-in-out;
@@ -100,6 +101,20 @@
         });
     </script>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/serviceworker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
     <!-- Toast -->
     <div aria-live="polite" aria-atomic="true" class="position-fixed">
         <div id="toast-container" class="toast-container position-fixed top-0 end-0 mt-5 px-3 pt-4 pb-3">
@@ -108,7 +123,7 @@
     </div>
 
     <!-- Navbar Top -->
-    <nav class="navbar bg-body-tertiary bgc-white">
+    <nav class="navbar bg-body-tertiary bgc-white bd-bottom">
         <div class="container-fluid">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand gap-10" th:href="@{/}">
@@ -178,7 +193,7 @@
         </div>
     </nav>
     <!-- Navbar Bottom -->
-    <nav class="navbar fixed-bottom bg-body-tertiary bgc-white d-sm-none">
+    <nav class="navbar nav-b fixed-bottom bg-body-tertiary bgc-white bd-top d-sm-none">
         <div class="container-fluid">
             <ul class="nav nav-fill w-100">
                 <li class="nav-item navbar-button">
@@ -241,9 +256,15 @@
             </ul>
         </div>
     </nav>
+    <script>
+        // "standalone" 모드 확인
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            document.getElementsByClassName('nav-b')[0].classList.add('standalone');
+        }
+    </script>
 
     <!-- Main -->
-    <main class="main-content bgc-grey-200">
+    <main class="main-content bgc-grey-200 overflow-y-scroll">
         <div id="mainContent">
             <div class="container-fluid">
                 <!-- Content -->

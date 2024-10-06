@@ -26648,11 +26648,20 @@ textarea.form-control-lg {
 
 .main-content {
     padding: 20px 20px 20px;
-    min-height: calc(100vh - 61px);
+    height: calc(100vh - 61px);
 }
-@media screen and (max-width: 991px) {
+
+@media screen and (max-width: 576px) {
     .main-content {
-        padding: 10px 0px 10px;
+        padding: 10px 0px 25px;
+        height: calc(100vh - 122px);
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 991px) {
+    .main-content {
+        padding: 10px 0px 25px;
+        height: calc(100vh - 61px);
     }
 }
 
@@ -26726,6 +26735,18 @@ textarea.form-control-lg {
 
 .bd {
     border: 1px solid rgba(0, 0, 0, 0.0625) !important;
+}
+
+.bd-top {
+    border-top: 1px solid rgba(0, 0, 0, 0.0625) !important;
+}
+
+.bd-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0625) !important;
+}
+
+.standalone {
+    padding-bottom: 20px; /* 하단 여백 추가 */
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */
