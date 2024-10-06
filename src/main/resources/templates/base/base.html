@@ -55,13 +55,32 @@
               }
         }
 
-        .nav-item-svg svg {
+        .nav-t-item-svg svg {
             width: 25px;
             height: 25px;
         }
 
-        .nav-item-svg.selected svg path {
-            fill: url(#gradient);
+        .nav-t-item-svg.selected svg path {
+            fill: url(#gradient-nav-t) !important;
+        }
+
+        .nav-t-item-svg:hover svg path {
+            fill: url(#gradient-nav-t-hover) !important;
+        }
+
+        .nav-b-item-svg svg {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 25px;
+            height: 25px;
+        }
+
+        .nav-b-item-svg.selected svg path {
+            fill: url(#gradient-nav-b) !important;
+        }
+
+        .nav-b-item-svg:hover svg path {
+            fill: url(#gradient-nav-b-hover) !important;
         }
     </style>
 </head>
@@ -88,7 +107,7 @@
         </div>
     </div>
 
-    <!-- Navbar -->
+    <!-- Navbar Top -->
     <nav class="navbar bg-body-tertiary bgc-white">
         <div class="container-fluid">
             <div class="d-flex align-items-center">
@@ -97,15 +116,20 @@
                 </a>
                     <span th:href="@{/}" class="px-2 text-logo">MapTrips</span>
             </div>
-            <div class="collapse navbar-collapse"></div>
-            <ul class="nav justify-content-end">
-                <li class="nav-item mx-2">
-                    <a href="#" class="nav-item-svg selected" aria-pressed="false">
+            <ul class="nav justify-content-end d-none d-sm-flex">
+                <li class="nav-item navbar-button">
+                    <a href="/" th:class="'nav-t-item-svg ' + ${navbar.home ? 'selected' : ''}" aria-pressed="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
                             <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <linearGradient id="gradient-nav-t" x1="0%" y1="0%" x2="100%" y2="0%">
                                     <stop offset="0%" style="stop-color:#ff682c; stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#d82e52; stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <defs>
+                                <linearGradient id="gradient-nav-t-hover" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:rgba(255,104,44,0.7); stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgba(216,46,82,0.7); stop-opacity:1" />
                                 </linearGradient>
                             </defs>
                             <path id="path"
@@ -114,60 +138,100 @@
                         </svg>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a href="#" class="nav-item-svg" aria-pressed="false">
+                <li class="nav-item navbar-button">
+                    <a href="/search/" th:class="'nav-t-item-svg ' + ${navbar.search ? 'selected' : ''}" aria-pressed="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#ff682c; stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#d82e52; stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
                             <path id="path"
                                   d="M 21.71 20.29 L 18 16.61 C 19.44 14.815 20.137 12.535 19.949 10.241 C 19.76 7.948 18.699 5.812 16.986 4.277 C 15.272 2.741 13.033 1.92 10.733 1.982 C 8.433 2.045 6.242 2.988 4.615 4.615 C 2.988 6.242 2.045 8.433 1.982 10.733 C 1.92 13.033 2.741 15.272 4.277 16.986 C 5.812 18.699 7.948 19.76 10.241 19.949 C 12.535 20.137 14.815 19.44 16.61 18 L 20.29 21.68 C 20.414 21.805 20.569 21.895 20.74 21.941 C 20.91 21.987 21.09 21.987 21.26 21.941 C 21.431 21.895 21.586 21.805 21.71 21.68 C 21.89 21.494 21.991 21.244 21.991 20.985 C 21.991 20.726 21.89 20.476 21.71 20.29 Z M 11 18 C 9.144 18 7.363 17.262 6.05 15.95 C 4.738 14.637 4 12.856 4 11 C 4 9.144 4.738 7.363 6.05 6.05 C 7.363 4.738 9.144 4 11 4 C 12.856 4 14.637 4.738 15.95 6.05 C 17.262 7.363 18 9.144 18 11 C 18 12.229 17.677 13.436 17.062 14.5 C 16.448 15.564 15.564 16.448 14.5 17.062 C 13.436 17.677 12.229 18 11 18 Z"
                                   fill="#999999"/>
                         </svg>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a href="#" class="nav-item-svg" aria-pressed="false">
+                <li class="nav-item navbar-button">
+                    <a href="/add/" th:class="'nav-t-item-svg ' + ${navbar.add ? 'selected' : ''}" aria-pressed="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#ff682c; stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#d82e52; stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
                             <path id="path"
                                   d="M 9 13 L 11 13 L 11 15 C 11 15.265 11.105 15.52 11.293 15.707 C 11.48 15.895 11.735 16 12 16 C 12.265 16 12.52 15.895 12.707 15.707 C 12.895 15.52 13 15.265 13 15 L 13 13 L 15 13 C 15.265 13 15.52 12.895 15.707 12.707 C 15.895 12.52 16 12.265 16 12 C 16 11.735 15.895 11.48 15.707 11.293 C 15.52 11.105 15.265 11 15 11 L 13 11 L 13 9 C 13 8.735 12.895 8.48 12.707 8.293 C 12.52 8.105 12.265 8 12 8 C 11.735 8 11.48 8.105 11.293 8.293 C 11.105 8.48 11 8.735 11 9 L 11 11 L 9 11 C 8.735 11 8.48 11.105 8.293 11.293 C 8.105 11.48 8 11.735 8 12 C 8 12.265 8.105 12.52 8.293 12.707 C 8.48 12.895 8.735 13 9 13 Z M 21 2 L 3 2 C 2.735 2 2.48 2.105 2.293 2.293 C 2.105 2.48 2 2.735 2 3 L 2 21 C 2 21.265 2.105 21.52 2.293 21.707 C 2.48 21.895 2.735 22 3 22 L 21 22 C 21.265 22 21.52 21.895 21.707 21.707 C 21.895 21.52 22 21.265 22 21 L 22 3 C 22 2.735 21.895 2.48 21.707 2.293 C 21.52 2.105 21.265 2 21 2 Z M 20 20 L 4 20 L 4 4 L 20 4 Z"
                                   fill="#999999"/>
                         </svg>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a href="#" class="nav-item-svg" aria-pressed="false">
+                <li class="nav-item navbar-button">
+                    <a href="/folder/" th:class="'nav-t-item-svg ' + ${navbar.folder ? 'selected' : ''}" aria-pressed="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#ff682c; stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#d82e52; stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
                             <path id="path"
                                   d="M 21.32 5.05 L 15.32 3.05 L 15.25 3.05 C 15.203 3.045 15.157 3.045 15.11 3.05 L 14.88 3.05 L 14.75 3.05 L 14.68 3.05 L 9 5 L 3.32 3.05 C 3.17 3 3.01 2.987 2.853 3.012 C 2.697 3.036 2.548 3.097 2.42 3.19 C 2.291 3.282 2.185 3.403 2.112 3.544 C 2.039 3.685 2.001 3.841 2 4 L 2 18 C 1.999 18.21 2.065 18.414 2.187 18.585 C 2.309 18.755 2.481 18.883 2.68 18.95 L 8.68 20.95 L 8.68 20.95 C 8.881 21.016 9.099 21.016 9.3 20.95 L 9.3 20.95 L 15 19.05 L 20.68 21 C 20.786 21.014 20.894 21.014 21 21 C 21.209 21.003 21.413 20.936 21.58 20.81 C 21.709 20.718 21.815 20.597 21.888 20.456 C 21.961 20.315 21.999 20.159 22 20 L 22 6 C 22.001 5.79 21.935 5.586 21.813 5.415 C 21.691 5.245 21.519 5.117 21.32 5.05 Z M 8 18.61 L 4 17.28 L 4 5.39 L 8 6.72 Z M 14 17.28 L 10 18.61 L 10 6.72 L 14 5.39 Z M 20 18.61 L 16 17.28 L 16 5.39 L 20 6.72 Z"
                                   fill="#999999"/>
                         </svg>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a href="#" class="nav-item-svg" aria-pressed="false">
+                <li class="nav-item navbar-button">
+                    <a href="/mypage/" th:class="'nav-t-item-svg ' + ${navbar.mypage ? 'selected' : ''}" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                            <path id="path"
+                                  d="M 15.71 12.71 C 16.833 11.827 17.604 10.57 17.884 9.169 C 18.164 7.768 17.934 6.312 17.236 5.065 C 16.539 3.818 15.418 2.86 14.077 2.366 C 12.737 1.871 11.263 1.871 9.923 2.366 C 8.582 2.86 7.461 3.818 6.764 5.065 C 6.066 6.312 5.836 7.768 6.116 9.169 C 6.396 10.57 7.167 11.827 8.29 12.71 C 6.61 13.383 5.144 14.499 4.049 15.94 C 2.954 17.38 2.27 19.091 2.07 20.89 C 2.042 21.155 2.12 21.42 2.286 21.627 C 2.453 21.835 2.696 21.968 2.96 21.997 C 3.225 22.026 3.491 21.949 3.698 21.783 C 3.906 21.617 4.04 21.374 4.07 21.11 C 4.29 19.156 5.222 17.349 6.688 16.039 C 8.154 14.728 10.053 14.003 12.02 14.003 C 13.987 14.003 15.886 14.728 17.352 16.039 C 18.818 17.349 19.75 19.156 19.97 21.11 C 19.997 21.356 20.114 21.583 20.299 21.747 C 20.484 21.911 20.723 22.001 20.97 22 L 21.08 22 C 21.342 21.97 21.582 21.837 21.747 21.631 C 21.911 21.425 21.988 21.162 21.96 20.9 C 21.76 19.096 21.072 17.381 19.971 15.938 C 18.87 14.496 17.397 13.379 15.71 12.71 Z M 12 12 C 10.94 12 9.921 11.578 9.172 10.828 C 8.422 10.079 8 9.06 8 8 C 8 6.94 8.422 5.921 9.172 5.172 C 9.921 4.422 10.94 4 12 4 C 13.06 4 14.079 4.422 14.828 5.172 C 15.578 5.921 16 6.94 16 8 C 16 9.06 15.578 10.079 14.828 10.828 C 14.079 11.578 13.06 12 12 12 Z"
+                                  fill="#999999"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar Bottom -->
+    <nav class="navbar fixed-bottom bg-body-tertiary bgc-white d-sm-none">
+        <div class="container-fluid">
+            <ul class="nav nav-fill w-100">
+                <li class="nav-item navbar-button">
+                    <a href="/" th:class="'nav-b-item-svg ' + ${navbar.home ? 'selected' : ''}" aria-pressed="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
                             <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <linearGradient id="gradient-nav-b" x1="0%" y1="0%" x2="100%" y2="0%">
                                     <stop offset="0%" style="stop-color:#ff682c; stop-opacity:1" />
                                     <stop offset="100%" style="stop-color:#d82e52; stop-opacity:1" />
                                 </linearGradient>
                             </defs>
+                            <defs>
+                                <linearGradient id="gradient-nav-b-hover" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:rgba(255,104,44,0.7); stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgba(216,46,82,0.7); stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path id="path"
+                                  d="M 20 8 L 20 8 L 14 2.74 C 13.45 2.248 12.738 1.976 12 1.976 C 11.262 1.976 10.55 2.248 10 2.74 L 4 8 C 3.682 8.284 3.429 8.633 3.256 9.022 C 3.084 9.412 2.997 9.834 3 10.26 L 3 19 C 3 19.795 3.316 20.559 3.879 21.121 C 4.441 21.684 5.205 22 6 22 L 18 22 C 18.795 22 19.559 21.684 20.121 21.121 C 20.684 20.559 21 19.795 21 19 L 21 10.25 C 21.002 9.826 20.914 9.406 20.741 9.018 C 20.569 8.63 20.316 8.283 20 8 Z M 14 20 L 10 20 L 10 15 C 10 14.735 10.105 14.48 10.293 14.293 C 10.48 14.105 10.735 14 11 14 L 13 14 C 13.265 14 13.52 14.105 13.707 14.293 C 13.895 14.48 14 14.735 14 15 Z M 19 19 C 19 19.265 18.895 19.52 18.707 19.707 C 18.52 19.895 18.265 20 18 20 L 16 20 L 16 15 C 16 14.205 15.684 13.441 15.121 12.879 C 14.559 12.316 13.795 12 13 12 L 11 12 C 10.205 12 9.441 12.316 8.879 12.879 C 8.316 13.441 8 14.205 8 15 L 8 20 L 6 20 C 5.735 20 5.48 19.895 5.293 19.707 C 5.105 19.52 5 19.265 5 19 L 5 10.25 C 5 10.108 5.031 9.968 5.089 9.838 C 5.148 9.709 5.233 9.594 5.34 9.5 L 11.34 4.25 C 11.522 4.09 11.757 4.001 12 4.001 C 12.243 4.001 12.478 4.09 12.66 4.25 L 18.66 9.5 C 18.767 9.594 18.852 9.709 18.911 9.838 C 18.969 9.968 19 10.108 19 10.25 Z"
+                                  fill="#999999"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item navbar-button">
+                    <a href="/search/" th:class="'nav-b-item-svg ' + ${navbar.search ? 'selected' : ''}" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                            <path id="path"
+                                  d="M 21.71 20.29 L 18 16.61 C 19.44 14.815 20.137 12.535 19.949 10.241 C 19.76 7.948 18.699 5.812 16.986 4.277 C 15.272 2.741 13.033 1.92 10.733 1.982 C 8.433 2.045 6.242 2.988 4.615 4.615 C 2.988 6.242 2.045 8.433 1.982 10.733 C 1.92 13.033 2.741 15.272 4.277 16.986 C 5.812 18.699 7.948 19.76 10.241 19.949 C 12.535 20.137 14.815 19.44 16.61 18 L 20.29 21.68 C 20.414 21.805 20.569 21.895 20.74 21.941 C 20.91 21.987 21.09 21.987 21.26 21.941 C 21.431 21.895 21.586 21.805 21.71 21.68 C 21.89 21.494 21.991 21.244 21.991 20.985 C 21.991 20.726 21.89 20.476 21.71 20.29 Z M 11 18 C 9.144 18 7.363 17.262 6.05 15.95 C 4.738 14.637 4 12.856 4 11 C 4 9.144 4.738 7.363 6.05 6.05 C 7.363 4.738 9.144 4 11 4 C 12.856 4 14.637 4.738 15.95 6.05 C 17.262 7.363 18 9.144 18 11 C 18 12.229 17.677 13.436 17.062 14.5 C 16.448 15.564 15.564 16.448 14.5 17.062 C 13.436 17.677 12.229 18 11 18 Z"
+                                  fill="#999999"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item navbar-button">
+                    <a href="/add/" th:class="'nav-b-item-svg ' + ${navbar.add ? 'selected' : ''}" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                            <path id="path"
+                                  d="M 9 13 L 11 13 L 11 15 C 11 15.265 11.105 15.52 11.293 15.707 C 11.48 15.895 11.735 16 12 16 C 12.265 16 12.52 15.895 12.707 15.707 C 12.895 15.52 13 15.265 13 15 L 13 13 L 15 13 C 15.265 13 15.52 12.895 15.707 12.707 C 15.895 12.52 16 12.265 16 12 C 16 11.735 15.895 11.48 15.707 11.293 C 15.52 11.105 15.265 11 15 11 L 13 11 L 13 9 C 13 8.735 12.895 8.48 12.707 8.293 C 12.52 8.105 12.265 8 12 8 C 11.735 8 11.48 8.105 11.293 8.293 C 11.105 8.48 11 8.735 11 9 L 11 11 L 9 11 C 8.735 11 8.48 11.105 8.293 11.293 C 8.105 11.48 8 11.735 8 12 C 8 12.265 8.105 12.52 8.293 12.707 C 8.48 12.895 8.735 13 9 13 Z M 21 2 L 3 2 C 2.735 2 2.48 2.105 2.293 2.293 C 2.105 2.48 2 2.735 2 3 L 2 21 C 2 21.265 2.105 21.52 2.293 21.707 C 2.48 21.895 2.735 22 3 22 L 21 22 C 21.265 22 21.52 21.895 21.707 21.707 C 21.895 21.52 22 21.265 22 21 L 22 3 C 22 2.735 21.895 2.48 21.707 2.293 C 21.52 2.105 21.265 2 21 2 Z M 20 20 L 4 20 L 4 4 L 20 4 Z"
+                                  fill="#999999"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item navbar-button">
+                    <a href="/folder/" th:class="'nav-b-item-svg ' + ${navbar.folder ? 'selected' : ''}" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                            <path id="path"
+                                  d="M 21.32 5.05 L 15.32 3.05 L 15.25 3.05 C 15.203 3.045 15.157 3.045 15.11 3.05 L 14.88 3.05 L 14.75 3.05 L 14.68 3.05 L 9 5 L 3.32 3.05 C 3.17 3 3.01 2.987 2.853 3.012 C 2.697 3.036 2.548 3.097 2.42 3.19 C 2.291 3.282 2.185 3.403 2.112 3.544 C 2.039 3.685 2.001 3.841 2 4 L 2 18 C 1.999 18.21 2.065 18.414 2.187 18.585 C 2.309 18.755 2.481 18.883 2.68 18.95 L 8.68 20.95 L 8.68 20.95 C 8.881 21.016 9.099 21.016 9.3 20.95 L 9.3 20.95 L 15 19.05 L 20.68 21 C 20.786 21.014 20.894 21.014 21 21 C 21.209 21.003 21.413 20.936 21.58 20.81 C 21.709 20.718 21.815 20.597 21.888 20.456 C 21.961 20.315 21.999 20.159 22 20 L 22 6 C 22.001 5.79 21.935 5.586 21.813 5.415 C 21.691 5.245 21.519 5.117 21.32 5.05 Z M 8 18.61 L 4 17.28 L 4 5.39 L 8 6.72 Z M 14 17.28 L 10 18.61 L 10 6.72 L 14 5.39 Z M 20 18.61 L 16 17.28 L 16 5.39 L 20 6.72 Z"
+                                  fill="#999999"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item navbar-button">
+                    <a href="/mypage/" th:class="'nav-b-item-svg ' + ${navbar.mypage ? 'selected' : ''}" aria-pressed="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
                             <path id="path"
                                   d="M 15.71 12.71 C 16.833 11.827 17.604 10.57 17.884 9.169 C 18.164 7.768 17.934 6.312 17.236 5.065 C 16.539 3.818 15.418 2.86 14.077 2.366 C 12.737 1.871 11.263 1.871 9.923 2.366 C 8.582 2.86 7.461 3.818 6.764 5.065 C 6.066 6.312 5.836 7.768 6.116 9.169 C 6.396 10.57 7.167 11.827 8.29 12.71 C 6.61 13.383 5.144 14.499 4.049 15.94 C 2.954 17.38 2.27 19.091 2.07 20.89 C 2.042 21.155 2.12 21.42 2.286 21.627 C 2.453 21.835 2.696 21.968 2.96 21.997 C 3.225 22.026 3.491 21.949 3.698 21.783 C 3.906 21.617 4.04 21.374 4.07 21.11 C 4.29 19.156 5.222 17.349 6.688 16.039 C 8.154 14.728 10.053 14.003 12.02 14.003 C 13.987 14.003 15.886 14.728 17.352 16.039 C 18.818 17.349 19.75 19.156 19.97 21.11 C 19.997 21.356 20.114 21.583 20.299 21.747 C 20.484 21.911 20.723 22.001 20.97 22 L 21.08 22 C 21.342 21.97 21.582 21.837 21.747 21.631 C 21.911 21.425 21.988 21.162 21.96 20.9 C 21.76 19.096 21.072 17.381 19.971 15.938 C 18.87 14.496 17.397 13.379 15.71 12.71 Z M 12 12 C 10.94 12 9.921 11.578 9.172 10.828 C 8.422 10.079 8 9.06 8 8 C 8 6.94 8.422 5.921 9.172 5.172 C 9.921 4.422 10.94 4 12 4 C 13.06 4 14.079 4.422 14.828 5.172 C 15.578 5.921 16 6.94 16 8 C 16 9.06 15.578 10.079 14.828 10.828 C 14.079 11.578 13.06 12 12 12 Z"
                                   fill="#999999"/>
@@ -178,13 +242,13 @@
         </div>
     </nav>
 
-
     <!-- Main -->
-    <main class="main-content bgc-grey-100">
+    <main class="main-content bgc-grey-200">
         <div id="mainContent">
+            <div class="container-fluid">
                 <!-- Content -->
-                <th:block th:replace="${content}">
-                </th:block>
+                <th:block th:replace="${content}"></th:block>
+            </div>
         </div>
     </main>
 

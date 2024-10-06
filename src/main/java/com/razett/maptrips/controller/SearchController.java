@@ -5,30 +5,31 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/search")
 @NoArgsConstructor
 //@RequiredArgsConstructor
-public class MainController {
+public class SearchController {
 
     /**
-     * {@code home = true;}
+     * {@code search = true;}
      */
-    private final NavbarSelector NAVBAR = NavbarSelector.builder().home(true).build();
+    private final NavbarSelector NAVBAR = NavbarSelector.builder().search(true).build();
 
     /**
-     * / (ROOT) 페이지
+     * 검색 메인 페이지
      * @param model springframework.ui.Model
-     * @return "/index.html"
+     * @return "/search/mainpage.html"
      * @since 2024-10-06
      * @author JiwonJeong
      */
-    @RequestMapping("/")
-    public String index(Model model) {
+    @GetMapping("/")
+    public String mainPage(Model model) {
         model.addAttribute("navbar", NAVBAR);
 
-        return "/index";
+        return "/search/mainpage";
     }
 }

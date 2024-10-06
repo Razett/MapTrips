@@ -6,12 +6,26 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
+/**
+ * <b>사용자</b>
+ *
+ * <p>{@code Long id} - 내부 관리용 ID [BIGINT, PK, Not Null]</p>
+ * <p>{@code String email} - E-Mail [VARCHAR, Not Null]</p>
+ * <p>{@code String username} - Username [VARCHAR, Not Null]</p>
+ * <p>{@code String password} - 암호 [VARCHAR, Not Null]</p>
+ * <p>{@code String phone} - 휴대전화 [VARCHAR, Not Null]</p>
+ *
+ * @since 2024-10-06
+ * @author JiwonJeong
+ * @version 1.0.0
+ */
 @Entity
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends BaseEntity {
+public class Users extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

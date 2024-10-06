@@ -4,7 +4,7 @@ var ToastService = (function (){
 
     function printToast(content) {
         var toastHtml = '<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">\n' +
-            '                        <div class="toast-header text-bg-secondary">\n' +
+            '                        <div class="toast-header bgc-title text-white">\n' +
             '                          <strong class="me-auto">알림</strong>\n' +
             '                          <small class="text-body-primary">' + formatTime() + '</small>\n' +
             '                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>\n' +

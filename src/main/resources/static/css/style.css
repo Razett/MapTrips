@@ -21290,6 +21290,62 @@ textarea.form-control-lg {
     }
 }
 
+.bdrs-1 {
+    border-radius: 1px !important
+}
+
+.bdrs-2 {
+    border-radius: 2px !important
+}
+
+.bdrs-3 {
+    border-radius: 3px !important
+}
+
+.bdrs-4 {
+    border-radius: 4px !important
+}
+
+.bdrs-5 {
+    border-radius: 5px !important
+}
+
+.bdrs-6 {
+    border-radius: 6px !important
+}
+
+.bdrs-7 {
+    border-radius: 7px !important
+}
+
+.bdrs-8 {
+    border-radius: 8px !important
+}
+
+.bdrs-9 {
+    border-radius: 9px !important
+}
+
+.bdrs-10 {
+    border-radius: 10px !important
+}
+
+.bdrs-15 {
+    border-radius: 15px !important
+}
+
+.bdrs-20 {
+    border-radius: 20px !important
+}
+
+.bdrs-25 {
+    border-radius: 25px !important
+}
+
+.bdrs-30 {
+    border-radius: 30px !important
+}
+
 .c-white, .cH-white:hover {
     color: #ffffff !important;
 }
@@ -26570,6 +26626,10 @@ textarea.form-control-lg {
     stroke: #313435 !important;
 }
 
+.bgc-title {
+    background-color: #ff682c !important;
+}
+
 .page-container {
     min-height: 100vh;
     padding-left: 280px;
@@ -26592,7 +26652,7 @@ textarea.form-control-lg {
 }
 @media screen and (max-width: 991px) {
     .main-content {
-        padding: 5px 5px 5px;
+        padding: 10px 0px 10px;
     }
 }
 
@@ -26657,6 +26717,15 @@ textarea.form-control-lg {
     font-family: logo-font;
     font-size: 1.25em;
     font-weight: 200;
+}
+
+.navbar-button {
+    margin-left: .75rem;
+    margin-right: .75rem;
+}
+
+.bd {
+    border: 1px solid rgba(0, 0, 0, 0.0625) !important;
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */
