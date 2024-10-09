@@ -48,4 +48,16 @@ public class NavbarSelector {
      */
     @Builder.Default
     private boolean mypage = false;
+
+    /**
+     * 상단 네비게이션 바 display 여부
+     */
+    @Builder.Default
+    private boolean topNavbar = true;
+
+    /**
+     * 하단 네비게이션 바 display 여부
+     */
+    @Builder.Default
+    private boolean bottomNavbar = true;
 }

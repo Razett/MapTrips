@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<th:block th:replace="~{/base/base::setContent(~{this::content})}">
+<th:block th:replace="~{/base/base::setContent(~{this::navbarTitle}, ~{this::content})}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,8 +9,46 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Navbar Top Title for Mobile Devices -->
+    <th:block th:fragment="navbarTitle">
+        <div class="d-flex align-items-center justify-content-between d-sm-none w-100">
+            <input type="text" class="form-control bgc-grey-100">
+            <a class="ms-2 py-2 nav-m-menu-svg nav-menu-search disabled" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                    <path id="path"
+                          d="M 21.71 20.29 L 18 16.61 C 19.44 14.815 20.137 12.535 19.949 10.241 C 19.76 7.948 18.699 5.812 16.986 4.277 C 15.272 2.741 13.033 1.92 10.733 1.982 C 8.433 2.045 6.242 2.988 4.615 4.615 C 2.988 6.242 2.045 8.433 1.982 10.733 C 1.92 13.033 2.741 15.272 4.277 16.986 C 5.812 18.699 7.948 19.76 10.241 19.949 C 12.535 20.137 14.815 19.44 16.61 18 L 20.29 21.68 C 20.414 21.805 20.569 21.895 20.74 21.941 C 20.91 21.987 21.09 21.987 21.26 21.941 C 21.431 21.895 21.586 21.805 21.71 21.68 C 21.89 21.494 21.991 21.244 21.991 20.985 C 21.991 20.726 21.89 20.476 21.71 20.29 Z M 11 18 C 9.144 18 7.363 17.262 6.05 15.95 C 4.738 14.637 4 12.856 4 11 C 4 9.144 4.738 7.363 6.05 6.05 C 7.363 4.738 9.144 4 11 4 C 12.856 4 14.637 4.738 15.95 6.05 C 17.262 7.363 18 9.144 18 11 C 18 12.229 17.677 13.436 17.062 14.5 C 16.448 15.564 15.564 16.448 14.5 17.062 C 13.436 17.677 12.229 18 11 18 Z"
+                          fill="#333333"/>
+                </svg>
+            </a>
+        </div>
+    </th:block>
+
+    <!-- Main Content -->
     <th:block th:fragment="content">
-        <p>search main page.</p>
+        <!-- NavBar Top Sub Title for large Devices -->
+        <div class="row justify-content-md-center d-sm-flex d-none">
+            <div class="col-md-8 bgc-white px-3 py-3 bd bdrs-15 mb-2">
+                <div class="d-flex align-items-center justify-content-between w-100">
+                    <input type="text" class="form-control bgc-grey-100">
+                    <a class="ms-2 py-2 nav-d-menu-svg nav-menu-search disabled" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                            <path id="path"
+                                  d="M 21.71 20.29 L 18 16.61 C 19.44 14.815 20.137 12.535 19.949 10.241 C 19.76 7.948 18.699 5.812 16.986 4.277 C 15.272 2.741 13.033 1.92 10.733 1.982 C 8.433 2.045 6.242 2.988 4.615 4.615 C 2.988 6.242 2.045 8.433 1.982 10.733 C 1.92 13.033 2.741 15.272 4.277 16.986 C 5.812 18.699 7.948 19.76 10.241 19.949 C 12.535 20.137 14.815 19.44 16.61 18 L 20.29 21.68 C 20.414 21.805 20.569 21.895 20.74 21.941 C 20.91 21.987 21.09 21.987 21.26 21.941 C 21.431 21.895 21.586 21.805 21.71 21.68 C 21.89 21.494 21.991 21.244 21.991 20.985 C 21.991 20.726 21.89 20.476 21.71 20.29 Z M 11 18 C 9.144 18 7.363 17.262 6.05 15.95 C 4.738 14.637 4 12.856 4 11 C 4 9.144 4.738 7.363 6.05 6.05 C 7.363 4.738 9.144 4 11 4 C 12.856 4 14.637 4.738 15.95 6.05 C 17.262 7.363 18 9.144 18 11 C 18 12.229 17.677 13.436 17.062 14.5 C 16.448 15.564 15.564 16.448 14.5 17.062 C 13.436 17.677 12.229 18 11 18 Z"
+                                  fill="#333333"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 bgc-white px-3 py-3 bd bdrs-15">
+                <div class="main">
+                    <span>Search main page.</span>
+                </div>
+            </div>
+        </div>
     </th:block>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

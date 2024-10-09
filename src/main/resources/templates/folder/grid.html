@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/base/base::setContent(~{this::navbarTitle}, ~{this::content})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapTrips</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar Top Title for Mobile Devices -->
+    <th:block th:fragment="navbarTitle">
+        <div class="d-flex align-items-center justify-content-between d-sm-none w-100">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand gap-10" th:href="@{/}">
+                    <img th:src="@{/assets/logo.png}" alt="Logo" width="45" height="45">
+                </a>
+                <span th:href="@{/}" class="px-2 text-logo">MapTrips</span>
+            </div>
+            <a class="ms-2 py-2 nav-m-menu-svg nav-menu-addfolder" th:href="@{/folder/addfolder}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                    <path id="path"
+                          d="M14,12.5L13,12.5v-1a1,1 0,0 0,-2 0v1L10,12.5a1,1 0,0 0,0 2h1v1a1,1 0,0 0,2 0v-1h1a1,1 0,0 0,0 -2ZM19,5.5L12.72,5.5l-0.32,-1a3,3 0,0 0,-2.84 -2L5,2.5a3,3 0,0 0,-3 3v13a3,3 0,0 0,3 3L19,21.5a3,3 0,0 0,3 -3L22,8.5A3,3 0,0 0,19 5.5ZM20,18.5a1,1 0,0 1,-1 1L5,19.5a1,1 0,0 1,-1 -1L4,5.5a1,1 0,0 1,1 -1L9.56,4.5a1,1 0,0 1,0.95 0.68l0.54,1.64A1,1 0,0 0,12 7.5h7a1,1 0,0 1,1 1Z"
+                          fill="#333333"/>
+                </svg>
+            </a>
+        </div>
+    </th:block>
+
+    <!-- Main Content -->
+    <th:block th:fragment="content">
+        <!-- NavBar Top Sub Title for large Devices -->
+        <div class="row justify-content-md-center d-sm-flex d-none">
+            <div class="col-md-8 bgc-white px-3 py-2 bd bdrs-15 mb-2">
+                <div class="d-flex align-items-center justify-content-between w-100">
+                    <span class="navbar-brand text-logo-sub"></span>
+                    <a class="ms-2 py-2 nav-d-menu-svg nav-menu-addfolder" th:href="@{/folder/addfolder}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
+                            <path id="path"
+                                  d="M14,12.5L13,12.5v-1a1,1 0,0 0,-2 0v1L10,12.5a1,1 0,0 0,0 2h1v1a1,1 0,0 0,2 0v-1h1a1,1 0,0 0,0 -2ZM19,5.5L12.72,5.5l-0.32,-1a3,3 0,0 0,-2.84 -2L5,2.5a3,3 0,0 0,-3 3v13a3,3 0,0 0,3 3L19,21.5a3,3 0,0 0,3 -3L22,8.5A3,3 0,0 0,19 5.5ZM20,18.5a1,1 0,0 1,-1 1L5,19.5a1,1 0,0 1,-1 -1L4,5.5a1,1 0,0 1,1 -1L9.56,4.5a1,1 0,0 1,0.95 0.68l0.54,1.64A1,1 0,0 0,12 7.5h7a1,1 0,0 1,1 1Z"
+                                  fill="#333333"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 bgc-white px-3 py-3 bd bdrs-15">
+                <div class="main">
+                    <span>folder main page.</span>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</th:block>
+</html>

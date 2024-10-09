@@ -2,36 +2,47 @@ package com.razett.maptrips.controller;
 
 import com.razett.maptrips.dto.NavbarSelector;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/search")
+@RequestMapping("/folder")
 @NoArgsConstructor
 //@RequiredArgsConstructor
-public class SearchController {
+public class FolderController {
 
     /**
-     * {@code search = true;}
+     * {@code folder = true;}
      */
     private final NavbarSelector NAVBAR = NavbarSelector.builder()
-            .search(true).topNavbar(true).bottomNavbar(true)
+            .folder(true).topNavbar(true).bottomNavbar(true)
             .build();
 
     /**
-     * 검색 메인 페이지
+     * 폴더 메인 페이지 (그리드)
      * @param model springframework.ui.Model
-     * @return "/search/mainpage.html"
-     * @since 2024-10-06
+     * @return "/folder/grid.html"
+     * @since 2024-10-09
      * @author JiwonJeong
      */
     @GetMapping("/")
     public String mainPage(Model model) {
         model.addAttribute("navbar", NAVBAR);
+        return "/folder/grid";
+    }
 
-        return "/search/mainpage";
+    /**
+     * 폴더 리스트 페이지
+     * @param model springframework.ui.Model
+     * @return "/folder/list.html"
+     * @since 2024-10-09
+     * @author JiwonJeong
+     */
+    @GetMapping("/list")
+    public String list(Model model) {
+        model.addAttribute("navbar", NAVBAR);
+        return "/folder/list";
     }
 }

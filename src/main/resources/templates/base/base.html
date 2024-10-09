@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="setContent(content)">
+<th:block th:fragment="setContent(navbarTitle, content)">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,34 +55,6 @@
                   opacity: 0;
               }
         }
-
-        .nav-t-item-svg svg {
-            width: 25px;
-            height: 25px;
-        }
-
-        .nav-t-item-svg.selected svg path {
-            fill: url(#gradient-nav-t) !important;
-        }
-
-        .nav-t-item-svg:hover svg path {
-            fill: url(#gradient-nav-t-hover) !important;
-        }
-
-        .nav-b-item-svg svg {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            width: 25px;
-            height: 25px;
-        }
-
-        .nav-b-item-svg.selected svg path {
-            fill: url(#gradient-nav-b) !important;
-        }
-
-        .nav-b-item-svg:hover svg path {
-            fill: url(#gradient-nav-b-hover) !important;
-        }
     </style>
 </head>
 <body class="app">
@@ -101,6 +73,7 @@
         });
     </script>
 
+    <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -125,13 +98,19 @@
     <!-- Navbar Top -->
     <nav class="navbar bg-body-tertiary bgc-white bd-bottom">
         <div class="container-fluid">
-            <div class="d-flex align-items-center">
+            <!-- Navbar Top Title for large Devices -->
+            <div class="d-flex align-items-center d-none d-sm-flex">
                 <a class="navbar-brand gap-10" th:href="@{/}">
                     <img th:src="@{/assets/logo.png}" alt="Logo" width="45" height="45">
                 </a>
                     <span th:href="@{/}" class="px-2 text-logo">MapTrips</span>
             </div>
-            <ul class="nav justify-content-end d-none d-sm-flex">
+
+            <!-- Navbar Top Title for Mobile Devices -->
+            <th:block th:replace="${navbarTitle}"></th:block>
+
+            <!-- Navbar Top Buttons -->
+            <ul th:class="'nav justify-content-end ' + ${navbar.topNavbar ? 'd-none d-sm-flex' : 'd-none'}">
                 <li class="nav-item navbar-button">
                     <a href="/" th:class="'nav-t-item-svg ' + ${navbar.home ? 'selected' : ''}" aria-pressed="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="vector">
@@ -193,7 +172,7 @@
         </div>
     </nav>
     <!-- Navbar Bottom -->
-    <nav class="navbar nav-b fixed-bottom bg-body-tertiary bgc-white bd-top d-sm-none">
+    <nav th:class="'navbar nav-b fixed-bottom bg-body-tertiary bgc-white bd-top ' + ${navbar.bottomNavbar ? 'd-sm-none' : 'd-none'}">
         <div class="container-fluid">
             <ul class="nav nav-fill w-100">
                 <li class="nav-item navbar-button">
@@ -256,15 +235,17 @@
             </ul>
         </div>
     </nav>
+
+    <!-- PWA Navbar Bottom Style -->
     <script>
-        // "standalone" 모드 확인
+        // if "standalone" mode.
         if (window.matchMedia('(display-mode: standalone)').matches) {
             document.getElementsByClassName('nav-b')[0].classList.add('standalone');
         }
     </script>
 
     <!-- Main -->
-    <main class="main-content bgc-grey-200 overflow-y-scroll">
+    <main th:class="'bgc-grey-200 overflow-y-scroll ' + ${navbar.bottomNavbar ? 'main-content' : 'main-content-non-bottom-nav'}">
         <div id="mainContent">
             <div class="container-fluid">
                 <!-- Content -->
@@ -276,7 +257,8 @@
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/toast.js}"></script>
     <script>
-        ToastService.printToast('test');
+        var msg = ' ';
+        // ToastService.printToast('msg');
     </script>
 </body>
 </th:block>

@@ -15,7 +15,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .requestMatchers("/manifest.json", "/serviceworker.js", "/assets/**", "css/**", "fonts/**", "/js/**", "/").permitAll()
+//                .requestMatchers("/manifest.json", "/serviceworker.js", "/assets/**", "css/**", "fonts/**", "/js/**", "/", "/login").permitAll()
+                .requestMatchers("/manifest.json", "/serviceworker.js", "/assets/**", "css/**", "fonts/**", "/js/**", "/**").permitAll() //for dev only.
                 .anyRequest().authenticated()
                 .and()
                 .csrf(AbstractHttpConfigurer::disable);
