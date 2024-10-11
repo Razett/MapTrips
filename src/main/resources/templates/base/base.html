@@ -250,6 +250,8 @@
             <div class="container-fluid">
                 <!-- Content -->
                 <th:block th:replace="${content}"></th:block>
+                <!-- if Navbar Bottom hide -->
+                <div th:class="${navbar.bottomNavbar ? 'd-none' : 'd-sm-none'}" style="height: 30px"></div>
             </div>
         </div>
     </main>

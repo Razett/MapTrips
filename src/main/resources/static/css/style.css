@@ -2286,9 +2286,9 @@ progress {
 .form-control:focus {
     color: var(--bs-body-color);
     background-color: var(--bs-body-bg);
-    border-color: #86b7fe;
+    border-color: #f38579;
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+    box-shadow: 0 0 0 .25rem rgba(245, 81, 64, 0.25)
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -3260,19 +3260,19 @@ textarea.form-control-lg {
 
 .btn-primary {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #0d6efd;
-    --bs-btn-border-color: #0d6efd;
+    --bs-btn-bg: #F55140;
+    --bs-btn-border-color: #F55140;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0b5ed7;
-    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-hover-bg: #f38579;
+    --bs-btn-hover-border-color: #f38579;
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #0a58ca;
-    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-bg: #f41e06;
+    --bs-btn-active-border-color: #f41e06;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #0d6efd;
-    --bs-btn-disabled-border-color: #0d6efd
+    --bs-btn-disabled-bg: #F55140;
+    --bs-btn-disabled-border-color: #F55140
 }
 
 .btn-secondary {
@@ -3395,19 +3395,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-primary {
-    --bs-btn-color: #0d6efd;
-    --bs-btn-border-color: #0d6efd;
+    --bs-btn-color: #F55140;
+    --bs-btn-border-color: #F55140;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0d6efd;
-    --bs-btn-hover-border-color: #0d6efd;
+    --bs-btn-hover-bg: #F55140;
+    --bs-btn-hover-border-color: #F55140;
     --bs-btn-focus-shadow-rgb: 13, 110, 253;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #0d6efd;
-    --bs-btn-active-border-color: #0d6efd;
+    --bs-btn-active-bg: #F55140;
+    --bs-btn-active-border-color: #F55140;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #0d6efd;
+    --bs-btn-disabled-color: #F55140;
     --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #0d6efd;
+    --bs-btn-disabled-border-color: #F55140;
     --bs-gradient: none
 }
 
@@ -26768,6 +26768,83 @@ textarea.form-control-lg {
     src: url("../fonts/pretendard_semibold.otf");
 }
 
+/* MapTrips TextSize */
+.ts-title {
+    font-family: pretendard_semibold;
+    font-size: 1.15em;
+    font-weight: 400;
+}
+
+.ts-title-big {
+    font-family: pretendard_bold;
+    font-size: 1.35em;
+    font-weight: 400;
+}
+
+.ts-0-25 {
+    font-size: 0.25em;
+}
+
+.ts-0-50 {
+    font-size: 0.5em;
+}
+
+.ts-0-75 {
+    font-size: 0.75em;
+}
+
+.ts-0-80 {
+    font-size: 0.80em;
+}
+
+.ts-0-85 {
+    font-size: 0.85em;
+}
+
+.ts-0-90 {
+    font-size: 0.90em;
+}
+
+.ts-0-95 {
+    font-size: 0.95em;
+}
+
+.ts-1 {
+    font-size: 1em;
+}
+
+.ts-1-10 {
+    font-size: 1.10em;
+}
+
+.ts-1-15 {
+    font-size: 1.15em;
+}
+
+.ts-1-25 {
+    font-size: 1.25em;
+}
+
+.ts-1-30 {
+    font-size: 1.30em;
+}
+
+.ts-1-35 {
+    font-size: 1.35em;
+}
+
+.ts-1-50 {
+    font-size: 1.5em;
+}
+
+.ts-1-75 {
+    font-size: 1.75em;
+}
+
+.ts-2 {
+    font-size: 2em;
+}
+
 /* MapTrips NavBar */
 .text-logo {
     font-family: logo-font;
@@ -26869,4 +26946,5 @@ textarea.form-control-lg {
     font-size: 1.15em;
     font-weight: 400;
 }
+
 /*# sourceMappingURL=bootstrap.min.css.map */
