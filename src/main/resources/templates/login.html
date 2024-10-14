@@ -41,7 +41,7 @@
                     <!-- Input Area -->
                     <div class="col-md-6 mt-4 mt-md-0">
                         <div class="d-flex w-100 h-100 align-items-center">
-                            <div class="vr me-3 d-none d-md-flex"></div>
+                            <div class="vr me-4 d-none d-md-flex"></div>
                             <div class="w-100">
                                 <span class="text-break ts-title">로그인</span>
                                 <!-- Login Form -->
@@ -60,7 +60,7 @@
                                 <!-- Social Login Area -->
                                 <div>
                                     <div class="d-flex justify-content-center">
-                                        <a th:href="@{/login}" class="mx-2">
+                                        <a th:href="${loginApi.naverLoginApiURL}" class="mx-2">
                                             <img height="35" alt="naver" th:src="@{/assets/image/ic_naver_circle.png}"/>
                                         </a>
                                         <a th:href="@{/login}" class="mx-2">

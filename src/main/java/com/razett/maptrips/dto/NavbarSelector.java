@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  * <b>네비게이션 바</b>
  *
  * 네비게이션 바 벡터의 selected class 적용을 위해 사용합니다. selected일 시, 각 필드를 true로 변경하세요.
- * @since 2024-10-06
+ * @since 2024-10-06 v1.0.0
  * @author JiwonJeong
  * @version 1.0.0
  */

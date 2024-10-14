@@ -1,5 +1,6 @@
 package com.razett.maptrips.controller;
 
+import com.razett.maptrips.dto.LoginApiDTO;
 import com.razett.maptrips.dto.NavbarSelector;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -8,11 +9,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * index, Login 페이지 처리 Main Controller
+ * @since 2024-10-06 v1.0.0
+ * @author jeongjiwon
+ * @version 1.0.0
+ */
 @Controller
 @RequestMapping("/")
-@NoArgsConstructor
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class MainController {
+
+    private final LoginApiDTO loginApiDTO;
 
     /**
      * {@code home = true;}
@@ -49,6 +57,8 @@ public class MainController {
         NavbarSelector loginNavBar = NavbarSelector.builder().topNavbar(false).bottomNavbar(false).build();
         model.addAttribute("navbar", loginNavBar);
         model.addAttribute("source", source);
+
+        model.addAttribute("loginApi", loginApiDTO);
 
         return "/login";
     }

@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * <b>성별</b>
  *
- * @since 2024-10-06
+ * @since 2024-10-06 v1.0.0
  * @author JiwonJeong
  * @version 1.0.0
  */

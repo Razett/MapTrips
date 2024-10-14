@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
  * <p>{@code String password} - 암호 [VARCHAR, Not Null]</p>
  * <p>{@code String phone} - 휴대전화 [VARCHAR, Not Null]</p>
  *
- * @since 2024-10-06
+ * @since 2024-10-06 v1.0.0
  * @author JiwonJeong
  * @version 1.0.0
  */

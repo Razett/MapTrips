@@ -7,6 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * MyPage Controller
+ *
+ * @since 2024-10-10 v1.0.0
+ * @author jeongjiwon
+ * @version 1.0.0
+ */
 @Controller
 @RequestMapping("/mypage")
 @NoArgsConstructor
@@ -32,7 +39,7 @@ public class MyPageController {
      * 내 정보 메인 페이지
      * @param model springframework.ui.Model
      * @return "/mypage/mainpage.html"
-     * @since 2024-10-09
+     * @since 2024-10-09 v1.0.0
      * @author JiwonJeong
      */
     @GetMapping("/")
@@ -46,7 +53,7 @@ public class MyPageController {
      * 설정 메인 페이지
      * @param model springframework.ui.Model
      * @return "/mypage/setting/mainpage.html"
-     * @since 2024-10-10
+     * @since 2024-10-10 v1.0.0
      * @author JiwonJeong
      */
     @GetMapping("/setting/")

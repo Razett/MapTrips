@@ -8,6 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Search Controller
+ * @since 2024-10-06
+ * @author jeongjiwon
+ * @version 1.0.0
+ */
 @Controller
 @RequestMapping("/search")
 @NoArgsConstructor
@@ -25,7 +31,7 @@ public class SearchController {
      * 검색 메인 페이지
      * @param model springframework.ui.Model
      * @return "/search/mainpage.html"
-     * @since 2024-10-06
+     * @since 2024-10-06 v1.0.0
      * @author JiwonJeong
      */
     @GetMapping("/")

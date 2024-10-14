@@ -7,6 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Folder Controller
+ * @since 2024-10-09 v1.0.0
+ * @author jeongjiwon
+ * @version 1.0.0
+ */
 @Controller
 @RequestMapping("/folder")
 @NoArgsConstructor
@@ -24,7 +30,7 @@ public class FolderController {
      * 폴더 메인 페이지 (그리드)
      * @param model springframework.ui.Model
      * @return "/folder/grid.html"
-     * @since 2024-10-09
+     * @since 2024-10-09 v1.0.0
      * @author JiwonJeong
      */
     @GetMapping("/")
@@ -37,7 +43,7 @@ public class FolderController {
      * 폴더 리스트 페이지
      * @param model springframework.ui.Model
      * @return "/folder/list.html"
-     * @since 2024-10-09
+     * @since 2024-10-09 v1.0.0
      * @author JiwonJeong
      */
     @GetMapping("/list")

@@ -20,7 +20,7 @@ import org.hibernate.annotations.ColumnDefault;
  * <p>{@code String mainAddr} - 기본주소 [VARCHAR, Null]</p>
  * <p>{@code String subAddr} - 상세주소 [VARCHAR, Null]</p>
  *
- * @since 2024-10-06
+ * @since 2024-10-06 v1.0.0
  * @author JiwonJeong
  * @version 1.0.0
  */
