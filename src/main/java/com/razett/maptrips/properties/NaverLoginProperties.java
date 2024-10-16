@@ -20,4 +20,6 @@ public class NaverLoginProperties {
     private String clientSecret;
     private String requestUrl;
     private String redirectUrl;
+    private String accessTokenUrl;
+    private String queryProfileUrl;
 }

@@ -1,8 +1,7 @@
 package com.razett.maptrips.controller;
 
-import com.razett.maptrips.dto.LoginApiDTO;
 import com.razett.maptrips.dto.NavbarSelector;
-import lombok.NoArgsConstructor;
+import com.razett.maptrips.service.api.SocialLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class MainController {
 
-    private final LoginApiDTO loginApiDTO;
+    private final SocialLoginService socialLoginService;
 
     /**
      * {@code home = true;}
@@ -58,7 +57,7 @@ public class MainController {
         model.addAttribute("navbar", loginNavBar);
         model.addAttribute("source", source);
 
-        model.addAttribute("loginApi", loginApiDTO);
+        model.addAttribute("naverLoginUrl", socialLoginService.getNaverAuthorizationUrl());
 
         return "/login";
     }

@@ -1,6 +1,6 @@
 package com.razett.maptrips.entity;
 
-import com.razett.maptrips.value.Gender;
+import com.razett.maptrips.type.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
