@@ -1,6 +1,7 @@
 package com.razett.maptrips.controller.api;
 
-import com.razett.maptrips.dto.SocialLoginDTO;
+import com.razett.maptrips.dto.UsersDTO;
+import com.razett.maptrips.dto.social.NaverCode;
 import com.razett.maptrips.service.api.SocialLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,7 @@ public class SocialLoginController {
      * @return
      */
     @RequestMapping("/naver.do")
-    public SocialLoginDTO naverLoginApiCallback(SocialLoginDTO socialLoginDTO) {
-        SocialLoginDTO dto = socialLoginService.getNaverAccessToken(socialLoginDTO);
-        return socialLoginService.getNaverProfile(dto);
+    public UsersDTO naverLoginApiCallback(NaverCode naverCode) {
+        return socialLoginService.loginByNaver(naverCode);
     }
 }

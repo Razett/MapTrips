@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
  * <p>{@code String username} - Username [VARCHAR, Not Null]</p>
  * <p>{@code String password} - 암호 [VARCHAR, Not Null]</p>
  * <p>{@code String phone} - 휴대전화 [VARCHAR, Not Null]</p>
+ * <p>{@code String naverId} - 네이버 로그인 API ID값 [VARCHAR, Not Null]</p>
  *
  * @since 2024-10-06 v1.0.0
  * @author JiwonJeong
@@ -43,4 +44,9 @@ public class Users extends BaseEntity {
     @Column(nullable = false, length = 12)
     private String phone;
 
+    @Column(nullable = true, length = 255)
+    private String naverId;
+
+    @OneToOne(mappedBy = "users")
+    private UserInfo userInfo;
 }

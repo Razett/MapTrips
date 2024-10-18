@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.time.LocalDate;
+
 /**
  * <b>사용자 정보</b>
  *
@@ -19,6 +21,7 @@ import org.hibernate.annotations.ColumnDefault;
  * <p>{@code String postcode} - 우편번호 [VARCHAR, Null]</p>
  * <p>{@code String mainAddr} - 기본주소 [VARCHAR, Null]</p>
  * <p>{@code String subAddr} - 상세주소 [VARCHAR, Null]</p>
+ * <p>{@code LocalDate birthday} - 생일 [VARCHAR, Null]</p>
  *
  * @since 2024-10-06 v1.0.0
  * @author JiwonJeong
@@ -32,7 +35,10 @@ import org.hibernate.annotations.ColumnDefault;
 public class UserInfo extends BaseEntity {
 
     @Id
+    private Long id;
+
     @OneToOne
+    @MapsId
     private Users users;
 
     @Column(nullable = true, length = 20)
@@ -57,4 +63,7 @@ public class UserInfo extends BaseEntity {
 
     @Column(nullable = true)
     private String subAddr;
+
+    @Column(nullable = true)
+    private LocalDate birthday;
 }
