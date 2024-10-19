@@ -1,8 +1,5 @@
-package com.razett.maptrips.dto;
+package com.razett.maptrips.dto.user;
 
-import com.razett.maptrips.entity.UserInfo;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -6,7 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * index, Login 페이지 처리 Main Controller
@@ -42,7 +44,6 @@ public class MainController {
         return "/index";
     }
 
-
     /**
      * 로그인 페이지
      * @param model springframework.ui.Model
@@ -60,5 +61,11 @@ public class MainController {
         model.addAttribute("naverLoginUrl", socialLoginService.getNaverAuthorizationUrl());
 
         return "/login";
+    }
+
+
+    @PostMapping("/login")
+    public String login(Model model, String source, RedirectAttributes redirectAttributes) {
+        return "/index";
     }
 }

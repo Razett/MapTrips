@@ -89,7 +89,7 @@
     </script>
 
     <!-- Toast -->
-    <div aria-live="polite" aria-atomic="true" class="position-fixed">
+    <div aria-live="polite" aria-atomic="true" class="position-fixed z-3">
         <div id="toast-container" class="toast-container position-fixed top-0 end-0 mt-5 px-3 pt-4 pb-3">
             <!-- Then put toasts within -->
         </div>
@@ -259,8 +259,10 @@
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/toast.js}"></script>
     <script>
-        var msg = ' ';
-        // ToastService.printToast('msg');
+        var msg = '[[${msg}]]';
+        if (msg) {
+            ToastService.printToast(msg);
+        }
     </script>
 </body>
 </th:block>

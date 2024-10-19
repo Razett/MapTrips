@@ -1,8 +1,8 @@
-package com.razett.maptrips.mapper;
+package com.razett.maptrips.mapper.user;
 
 import com.razett.maptrips.dto.social.NaverResponse;
-import com.razett.maptrips.dto.UsersDTO;
-import com.razett.maptrips.entity.Users;
+import com.razett.maptrips.dto.user.UsersDTO;
+import com.razett.maptrips.entity.user.Users;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,11 @@
 package com.razett.maptrips.service.api;
 
-import com.razett.maptrips.dto.UsersDTO;
+import com.razett.maptrips.dto.user.UsersDTO;
 import com.razett.maptrips.dto.social.NaverAccToken;
 import com.razett.maptrips.dto.social.NaverCode;
 import com.razett.maptrips.dto.social.NaverProfile;
+
+import java.util.Optional;
 
 /**
  * Login HTML에 필요한 기능을 정의한 Interface.
@@ -20,5 +22,5 @@ public interface SocialLoginService {
 
     NaverProfile getNaverProfile(NaverAccToken naverAccToken);
 
-    UsersDTO loginByNaver(NaverCode naverCode);
+    Optional<UsersDTO> getUserByNaver(NaverCode naverCode);
 }

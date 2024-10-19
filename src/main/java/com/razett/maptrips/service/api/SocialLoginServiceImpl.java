@@ -1,12 +1,12 @@
 package com.razett.maptrips.service.api;
 
-import com.razett.maptrips.dto.UserInfoDTO;
-import com.razett.maptrips.dto.UsersDTO;
+import com.razett.maptrips.dto.user.UserInfoDTO;
+import com.razett.maptrips.dto.user.UsersDTO;
 import com.razett.maptrips.dto.social.NaverAccToken;
 import com.razett.maptrips.dto.social.NaverCode;
 import com.razett.maptrips.dto.social.NaverProfile;
-import com.razett.maptrips.mapper.UserInfoMapper;
-import com.razett.maptrips.mapper.UsersMapper;
+import com.razett.maptrips.mapper.user.UserInfoMapper;
+import com.razett.maptrips.mapper.user.UsersMapper;
 import com.razett.maptrips.properties.NaverLoginProperties;
 import com.razett.maptrips.util.HttpUtils;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +18,7 @@ import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Login HTML에 필요한 서비스를 구현한 Class
@@ -26,12 +27,12 @@ import java.util.Map;
  * @author JiwonJeong
  * @version 1.0.0
  */
-
 @Service
 @RequiredArgsConstructor
 public class SocialLoginServiceImpl implements SocialLoginService {
 
     private final NaverLoginProperties naverLoginProperties;
+    private final HttpUtils httpUtils;
     private final UsersMapper usersMapper;
     private final UserInfoMapper userInfoMapper;
 
@@ -93,7 +94,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
 
         Map<String, String> requestHeaders = new HashMap<>();
 
-        return HttpUtils.get(apiUrl, requestHeaders, NaverAccToken.class);
+        return httpUtils.get(apiUrl, requestHeaders, NaverAccToken.class);
     }
 
     /**
@@ -111,11 +112,18 @@ public class SocialLoginServiceImpl implements SocialLoginService {
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("Authorization", header);
 
-        return HttpUtils.get(apiUrl, requestHeaders, NaverProfile.class);
+        return httpUtils.get(apiUrl, requestHeaders, NaverProfile.class);
     }
 
+    /**
+     * Naver Login API 로 로그인 시, 단계 별 요청을 진행하여 최종적으로 불러온 Naver 사용자 정보를 UsersDTO로 가져옵니다.
+     * @param naverCode 해당 객체 내 code와 state값을 사용합니다.
+     * @return Optional 로 wrapping 한 UsersDTO 객체. 이 객체는 UserInfoDTO를 포함합니다.
+     * @since 2024-10-20 v1.0.0
+     * @author JiwonJeong
+     */
     @Override
-    public UsersDTO loginByNaver(NaverCode naverCode) {
+    public Optional<UsersDTO> getUserByNaver(NaverCode naverCode) {
         if (naverCode.getCode() != null) {
             NaverAccToken naverAccToken = this.getNaverAccessToken(naverCode);
 
@@ -127,7 +135,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
                     UserInfoDTO userInfoDTO = userInfoMapper.naverProfileToDTO(naverProfile.getResponse());
 
                     usersDTO.setUserInfoDTO(userInfoDTO);
-                    return usersDTO;
+                    return Optional.of(usersDTO);
                 } else {
                     System.out.println(naverProfile.getMessage());
                 }
@@ -137,6 +145,6 @@ public class SocialLoginServiceImpl implements SocialLoginService {
         } else {
             System.out.println(naverCode.getError_description());
         }
-        return null;
+        return Optional.empty();
     }
 }

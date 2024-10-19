@@ -1,8 +1,8 @@
-package com.razett.maptrips.mapper;
+package com.razett.maptrips.mapper.user;
 
 import com.razett.maptrips.dto.social.NaverResponse;
-import com.razett.maptrips.dto.UserInfoDTO;
-import com.razett.maptrips.entity.UserInfo;
+import com.razett.maptrips.dto.user.UserInfoDTO;
+import com.razett.maptrips.entity.user.UserInfo;
 import com.razett.maptrips.type.Gender;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

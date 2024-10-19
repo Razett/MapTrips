@@ -1,6 +1,8 @@
 package com.razett.maptrips.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -17,12 +19,14 @@ import java.util.Map;
  * @author jeongjiwon
  * @version 1.0.0
  */
+@Component
+@RequiredArgsConstructor
 public class HttpUtils {
 
     /**
      * Http 요청의 결과 (body)를 JSON 에서 Java Object로 매핑하기 위한 객체
      */
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     /**
      * Http Get 요청을 보내고, 응답을 Java Object로 변환하여 반환합니다.
@@ -34,7 +38,7 @@ public class HttpUtils {
      * @since 2024-10-17 v1.0.0
      * @author jeongjiwon
      */
-    public static <T> T get(String apiUrl, Map<String, String> requestHeaders, Class<T> responseType) {
+    public <T> T get(String apiUrl, Map<String, String> requestHeaders, Class<T> responseType) {
         HttpURLConnection con = connect(apiUrl);
         try {
             con.setRequestMethod("GET");
@@ -53,7 +57,7 @@ public class HttpUtils {
         }
     }
 
-    private static HttpURLConnection connect(String apiUrl) {
+    private HttpURLConnection connect(String apiUrl) {
         try {
             URL url = new URL(apiUrl);
 
@@ -65,7 +69,7 @@ public class HttpUtils {
         }
     }
 
-    public static <T> T readBody(InputStream body, Class<T> valueType) {
+    public <T> T readBody(InputStream body, Class<T> valueType) {
         try (BufferedReader lineReader = new BufferedReader(new InputStreamReader(body))) {
             StringBuilder responseBody = new StringBuilder();
             String line;

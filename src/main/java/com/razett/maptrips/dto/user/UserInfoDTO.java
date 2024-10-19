@@ -1,6 +1,5 @@
-package com.razett.maptrips.dto;
+package com.razett.maptrips.dto.user;
 
-import com.razett.maptrips.entity.Users;
 import com.razett.maptrips.type.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
