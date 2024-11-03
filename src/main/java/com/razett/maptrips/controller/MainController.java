@@ -60,7 +60,7 @@ public class MainController {
 
         model.addAttribute("naverLoginUrl", socialLoginService.getNaverAuthorizationUrl());
 
-        return "/login";
+        return "/login/login";
     }
 
 

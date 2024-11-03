@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/base/base::setContent(~{this::navbarTitle}, ~{this::content})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapTrips</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar Top Title for Mobile Devices -->
+    <th:block th:fragment="navbarTitle">
+        <div class="d-flex align-items-center d-sm-none">
+            <a class="navbar-brand gap-10" th:href="@{/static}">
+                <img th:src="@{/assets/logo.png}" alt="Logo" width="45" height="45">
+            </a>
+            <span th:href="@{/static}" class="px-2 text-logo">MapTrips</span>
+        </div>
+    </th:block>
+
+    <!-- Main Content -->
+    <th:block th:fragment="content">
+        <!-- NavBar Top Sub Title for large Devices -->
+<!--        <div class="row justify-content-md-center d-sm-flex d-none">-->
+<!--        </div>-->
+
+        <!-- content -->
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 bgc-white px-4 py-4 bd bdrs-15 mb-2">
+                <div class="main">
+                    <div>
+                        <span class="text-break ts-title-big ts-1-75">Username</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-break ts-1 c-grey-700">자신을 표현할 수 있는 Username을 생성합니다.</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-check-circle ts-1-50 c-green-500"></i><br>
+                        </div>
+                        <hr class="col-2 hr-dotted">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-envelope-circle-check ts-1-50 c-green-500"></i><br>
+                        </div>
+                        <hr class="col-2 hr-dotted">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-key ts-1-50 c-green-500"></i><br>
+                        </div>
+                        <hr class="col-2 hr-dotted">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-circle-user ts-1-50 c-grey-800 fa-fade"></i><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Form Area -->
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 bgc-white px-4 py-4 bd bdrs-15">
+                <div class="main">
+                    <div>
+                        <form class="needs-validation" th:action="@{/login/signup/page3}" th:object="${SignUpUser}" method="post">
+                            <div class="row">
+                                <div class="mb-4">
+                                    <label class="form-label mb-0 c-grey-700 ts-0-90" for="usernameInput">Username</label>
+                                    <input type="text" class="form-control-maptrips" name="username" id="usernameInput" placeholder="maptrips" required>
+                                    <div id="username-feedback" class="nonvalid-feedback">Username은 6~14자리 이내 및 문자, 숫자, 특수문자(- _ .) 만 가능합니다.</div>
+                                </div>
+                                <div class="mt-3 px-2 w-100">
+                                    <button type="submit" class="btn btn-primary w-100 disabled" id="submitButton">완료</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</th:block>
+</html>

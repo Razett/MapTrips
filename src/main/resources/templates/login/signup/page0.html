@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/base/base::setContent(~{this::navbarTitle}, ~{this::content})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapTrips</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar Top Title for Mobile Devices -->
+    <th:block th:fragment="navbarTitle">
+        <div class="d-flex align-items-center d-sm-none">
+            <a class="navbar-brand gap-10" th:href="@{/static}">
+                <img th:src="@{/assets/logo.png}" alt="Logo" width="45" height="45">
+            </a>
+            <span th:href="@{/static}" class="px-2 text-logo">MapTrips</span>
+        </div>
+    </th:block>
+
+    <!-- Main Content -->
+    <th:block th:fragment="content">
+        <!-- NavBar Top Sub Title for large Devices -->
+<!--        <div class="row justify-content-md-center d-sm-flex d-none">-->
+<!--        </div>-->
+
+        <!-- content -->
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 bgc-white px-4 py-4 bd bdrs-15 mb-2">
+                <div class="main">
+                    <div>
+                        <span class="text-break ts-title-big ts-1-75">환영합니다.</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-break ts-1 c-grey-700">시작하기에 앞서 이용약관에 동의해주세요.</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-check-circle ts-1-50 c-grey-800 fa-fade"></i><br>
+                        </div>
+                        <hr class="col-2 hr-dotted">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-envelope-circle-check ts-1-50 c-grey-800"></i><br>
+                        </div>
+                        <hr class="col-2 hr-dotted">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-key ts-1-50 c-grey-800"></i><br>
+                        </div>
+                        <hr class="col-2 hr-dotted">
+                        <div class="col-1 text-center">
+                            <i class="fa-solid fa-circle-user ts-1-50 c-grey-800"></i><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 bgc-white px-4 py-4 bd bdrs-15">
+                <div class="main">
+                    <div>
+                        <form class="needs-validation" th:action="@{/login/signup/page0}" th:object="${SignUpUser}" method="post">
+                            <th:block th:if="${naverUser}">
+                                <input type="hidden" name="email" th:value="${naverUser.email}">
+                                <input type="hidden" name="phone" th:value="${naverUser.phone}">
+                                <input type="hidden" name="naverId" th:value="${naverUser.naverId}">
+                                <input type="hidden" name="firstName" th:value="${naverUser.userInfoDTO.firstName}">
+                                <input type="hidden" name="lastName" th:value="${naverUser.userInfoDTO.lastName}">
+                                <input type="hidden" name="gender" th:value="${naverUser.userInfoDTO.gender.ordinal}">
+                                <input type="hidden" name="age" th:value="${naverUser.userInfoDTO.age}">
+                                <input type="hidden" name="postcode" th:value="${naverUser.userInfoDTO.postcode}">
+                                <input type="hidden" name="mainAddr" th:value="${naverUser.userInfoDTO.mainAddr}">
+                                <input type="hidden" name="subAddr" th:value="${naverUser.userInfoDTO.subAddr}">
+                                <input type="hidden" name="birthday" th:value="${naverUser.userInfoDTO.birthday}">
+                            </th:block>
+                            <div class="form-check-nobdr mb-4">
+                                <input type="checkbox" class="form-check-input-nobdr" id="all-agree-checkbox" onclick="checkAll(this)">
+                                <label class="form-check-label" for="all-agree-checkbox">전체 동의</label>
+                            </div>
+                            <hr class="mb-4 mx-1">
+                            <div class="d-flex justify-content-between">
+                                <div class="form-check-nobdr mb-3">
+                                    <input type="checkbox" class="form-check-input-nobdr termsReq" name="termsReq" value="true" id="checkbox-req-1" onclick="updateCheckAll()">
+                                    <input type="hidden" name="_termsReq" value="on">
+                                    <label class="form-check-label" for="checkbox-req-1">Maptrips 이용 약관 동의 (필수)</label>
+                                </div>
+                                    <a class="px-2 c-grey-700" data-bs-toggle="modal" data-bs-target="#termsModal"><li class="fa-solid fa-angle-right"></li></a>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="form-check-nobdr mb-3">
+                                    <input type="checkbox" class="form-check-input-nobdr termsReq" name="termsReq" value="true" id="checkbox-req-2" onclick="updateCheckAll()">
+                                    <input type="hidden" name="_termsReq" value="on">
+                                    <label class="form-check-label" for="checkbox-req-2">개인 정보 수집 및 이용 동의 (필수)</label>
+                                </div>
+                                <a class="px-2 c-grey-700" data-bs-toggle="modal" data-bs-target="#termsModal"><li class="fa-solid fa-angle-right"></li></a>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="form-check-nobdr mb-3">
+                                    <input type="checkbox" class="form-check-input-nobdr termsReq" name="termsReq" value="true" id="checkbox-req-3" onclick="updateCheckAll()">
+                                    <input type="hidden" name="_termsReq" value="on">
+                                    <label class="form-check-label" for="checkbox-req-3">위치 기반 서비스 이용 동의 (필수)</label>
+                                </div>
+                                <a class="px-2 c-grey-700" data-bs-toggle="modal" data-bs-target="#termsModal"><li class="fa-solid fa-angle-right"></li></a>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="form-check-nobdr mb-4">
+                                    <input type="checkbox" class="form-check-input-nobdr termsOpt" th:field="*{termsOpt}" id="checkbox-opt-1" onclick="updateCheckAll()">
+                                    <label class="form-check-label" for="checkbox-opt-1">마케팅 정보 수신 동의 (선택)</label>
+                                </div>
+                                <a class="px-2 c-grey-700" data-bs-toggle="modal" data-bs-target="#termsModal"><li class="fa-solid fa-angle-right"></li></a>
+                            </div>
+                            <div class="mt-3 w-100">
+                                <button type="submit" class="btn btn-primary w-100 disabled" id="submitButton">다음</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title ts-1-15" id="exampleModalLabel">약관 상세내용</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function checkAll(source) {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach((checkbox) => {
+                    checkbox.checked = source.checked;
+                });
+                updateCheckAll();
+            }
+
+            // 개별 체크박스 상태에 따라 전체 선택 체크박스 상태를 업데이트하는 함수
+            function updateCheckAll() {
+                const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+                const reqCheckboxes = document.getElementsByClassName('termsReq');
+                const allAgreeCheckbox = document.getElementById('all-agree-checkbox');
+                const submitButton = document.getElementById('submitButton');
+
+                // 모든 개별 체크박스가 체크되었는지 확인
+                allAgreeCheckbox.checked = Array.from(allCheckboxes).every((checkbox) => checkbox.checked);
+                var flag = true;
+                Array.from(reqCheckboxes).forEach((checkbox) => {
+                    if (!checkbox.checked) {
+                        flag = false;
+                    }
+                });
+                var contained = submitButton.classList.contains('disabled')
+                if (flag) {
+                    if (contained) {
+                        submitButton.classList.remove('disabled');
+                    }
+                } else {
+                    if (!contained) {
+                        submitButton.classList.add('disabled');
+                    }
+                }
+            }
+        </script>
+    </th:block>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</th:block>
+</html>

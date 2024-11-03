@@ -22,7 +22,7 @@ public class LoginApiController {
 
     /**
      * Naver Login API 인증 요청 CallBack
-     * @return
+     * @return 네이버 로그인 오류 시 로그인 페이지, 회원이 아닐 경우 회원가입 페이지, 회원일 시 피드.
      */
     @RequestMapping("/naver.do")
     public RedirectView naverLoginApiCallback(NaverCode naverCode, RedirectAttributes redirectAttributes) {
@@ -36,8 +36,9 @@ public class LoginApiController {
                 redirectView.setUrl("/login");
                 // 로그인 구현
             } else {
-                redirectView.setUrl("/login");
+                redirectView.setUrl("/login/signup/page0");
                 redirectAttributes.addFlashAttribute("msg", optNaverUser.get().toString());
+                redirectAttributes.addFlashAttribute("naverUser", optNaverUser.get());
                 // 회원 가입으로 이동
             }
         } else {

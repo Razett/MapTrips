@@ -4,6 +4,7 @@ import com.razett.maptrips.dto.user.Verification;
 import com.razett.maptrips.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,8 +31,9 @@ public class UserApiController {
      * @since 2024-10-19 v1.0.0
      * @author JiwonJeong
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/check/email")
-    public ResponseEntity<Boolean> isAvailableEmail(String email) {
+    @RequestMapping(method = RequestMethod.POST, value = "/check/email")
+    public ResponseEntity<Boolean> isAvailableEmail(@RequestBody String email) {
+        String emailFormatted = email.replaceAll("\"", "").trim();
         return ResponseEntity.ok(userService.isAvailableEmail(email));
     }
 
@@ -43,9 +45,11 @@ public class UserApiController {
      * @since 2024-10-19 v1.0.0
      * @author JiwonJeong
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/sendcode")
-    public ResponseEntity<Boolean> sendVerificationCode(String email) {
-        return ResponseEntity.ok(userService.sendVerificationCode(email));
+    @RequestMapping(method = RequestMethod.POST, value = "/sendcode")
+    public ResponseEntity<Boolean> sendVerificationCode(@RequestBody String email) {
+        String emailFormatted = email.replaceAll("\"", "").trim();
+        System.out.println(emailFormatted);
+        return ResponseEntity.ok(userService.sendVerificationCode(emailFormatted));
     }
 
     /**
@@ -56,8 +60,9 @@ public class UserApiController {
      * @since 2024-10-19 v1.0.0
      * @author JiwonJeong
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/verifycode")
-    public ResponseEntity<Verification> VerifyCode(Verification verification) {
+    @RequestMapping(method = RequestMethod.POST, value = "/verifycode")
+    public ResponseEntity<Verification> VerifyCode(@RequestBody Verification verification) {
+        System.out.println(verification);
         return ResponseEntity.ok(userService.verifiedCode(verification));
     }
 
@@ -69,8 +74,8 @@ public class UserApiController {
      * @since 2024-10-20 v1.0.0
      * @author JiwonJeong
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/check/username")
-    public ResponseEntity<Boolean> isAvailableUsername(String username) {
+    @RequestMapping(method = RequestMethod.POST, value = "/check/username")
+    public ResponseEntity<Boolean> isAvailableUsername(@RequestBody String username) {
         return ResponseEntity.ok(userService.isAvailableEmail(username));
     }
 }

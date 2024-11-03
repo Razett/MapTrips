@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * email 주소로 인증 번호를 전송합니다.
-     * @param email 인증번호를 전송할 이메일 주소
+     * email 주소로 인증 코드를 전송합니다.
+     * @param email 인증 코드를 전송할 이메일 주소
      * @return 전송 성공 여부
      *
      * @since 2024-10-18 v1.0.0
@@ -59,14 +59,14 @@ public class UserServiceImpl implements UserService {
             smtpUtils.sendEmail(email, subject, body);
 
             // 인증번호를 Redis에 저장
-            redisUtils.setValues(AUTH_CODE_PREFIX + email, code, Duration.ofMillis(3 * 60 * 1000));
+            redisUtils.setValues(AUTH_CODE_PREFIX + email, code, Duration.ofMillis(5 * 60 * 1000));
             return true;
         }
         return false;
     }
 
     /**
-     * 인증 번호 6자리를 생성합니다.
+     * 인증 코드 6자리를 생성합니다.
      * @return 6자리 숫자 문자열
      *
      * @since 2024-10-18 v1.0.0
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 이메일 인증 번호를 검증합니다.
+     * 이메일 인증 코드를 검증합니다.
      * @param verification 검증 결과 여부 및 이메일 주소와 사용자가 입력한 인증 번호를 저장하는 객체
      * @return verification의 result - 인증 결과, message - 메시지를 저장하여 반환
      *
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
         if (!timeout) {
             return Verification.builder().result(false).message("인증 시간이 초과되었습니다. 다시 시도하세요.").build();
         } else if (!result){
-            return Verification.builder().result(false).message("인증 번호가 일치하지 않습니다. 다시 시도하세요.").build();
+            return Verification.builder().result(false).message("인증 코드가 일치하지 않습니다. 다시 시도하세요.").build();
         } else {
             // 인증 완료 시, Redis에서 제거
             redisUtils.deleteValues(AUTH_CODE_PREFIX + verification.getEmail());

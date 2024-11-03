@@ -1,27 +1,26 @@
 package com.razett.maptrips.dto.user;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * UsersDTO
+ * 회원가입 시 사용할 객체
  *
- * @since 2024-10-18 v1.0.0
- * @author JiwonJeong
+ * @since 2024-10-25 v1.0.0
+ * @author jeongjiwon
  * @version 1.0.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsersDTO implements Serializable {
+public class SignUpUser implements Serializable {
     private static final long serialVersionUID = 1L; // 버전 관리용 ID
 
     private Long id;
@@ -45,4 +44,9 @@ public class UsersDTO implements Serializable {
     private String naverId;
 
     private UserInfoDTO userInfoDTO;
+
+    @Size(min = 3, max = 3, message = "필수 이용약관에 모두 동의하여야 합니다.")
+    private List<Boolean> termsReq;
+
+    private Boolean termsOpt;
 }

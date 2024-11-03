@@ -24,9 +24,9 @@ public class Verification {
 
     private String message;
 
-    @JsonIgnore
+//    @JsonIgnore
     private String email;
 
-    @JsonIgnore
+//    @JsonIgnore
     private String code;
 }

@@ -12,10 +12,10 @@
     <!-- Navbar Top Title -->
     <th:block th:fragment="navbarTitle">
         <div class="d-flex align-items-center d-sm-none">
-            <a class="navbar-brand gap-10" th:href="@{/}">
+            <a class="navbar-brand gap-10" th:href="@{/static}">
                 <img th:src="@{/assets/logo.png}" alt="Logo" width="45" height="45">
             </a>
-            <span th:href="@{/}" class="px-2 text-logo">MapTrips</span>
+            <span th:href="@{/static}" class="px-2 text-logo">MapTrips</span>
         </div>
     </th:block>
 
@@ -45,13 +45,13 @@
                             <div class="w-100">
                                 <span class="text-break ts-title">로그인</span>
                                 <!-- Login Form -->
-                                <div class="form-floating mt-2 mb-3">
-                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username, Email 또는 휴대전화">
-                                    <label class="form-label c-grey-700 ts-0-90" for="username">Username, Email 또는 휴대전화</label>
+                                <div class="mt-2 mb-3">
+                                    <label class="form-label c-grey-700 ts-0-90 d-none" for="username">Username, Email 또는 휴대전화</label>
+                                    <input type="text" class="form-control-maptrips" name="username" id="username" placeholder="Username, Email 또는 휴대전화">
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="패스워드">
-                                    <label class="form-label c-grey-700 ts-0-90" for="password">패스워드</label>
+                                <div class="mb-4">
+                                    <label class="form-label c-grey-700 ts-0-90 d-none" for="password">암호</label>
+                                    <input type="password" class="form-control-maptrips" name="password" id="password" placeholder="패스워드">
                                 </div>
                                 <button class="btn btn-primary mb-1 w-100">로그인</button>
                                 <div class="text-center mb-4">
@@ -63,7 +63,7 @@
                                         <a th:href="${naverLoginUrl}" class="mx-2">
                                             <img height="35" alt="naver" th:src="@{/assets/image/ic_naver_circle.png}"/>
                                         </a>
-                                        <a th:href="@{/login}" class="mx-2">
+                                        <a th:href="@{/templates/login}" class="mx-2">
                                             <img height="35" alt="kakao" th:src="@{/assets/image/ic_kakao_circle.png}"/>
                                         </a>
                                     </div>
@@ -84,7 +84,7 @@
                             <span class="text-break ts-title">MapTrips가 처음이신가요?</span>
                         </div>
                         <div class="col-md-4 align-self-center">
-                            <a th:href="@{/login/signup}" class="btn btn-outline-primary w-100">회원가입 하기</a>
+                            <a th:href="@{/login/signup/page0}" class="btn btn-outline-primary w-100">회원가입 하기</a>
                         </div>
                     </div>
                 </div>
